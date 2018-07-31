@@ -6,7 +6,9 @@
 
     <context:annotation-config />
 
-    <bean id="helloBean" class="helloWorld.HelloWorld">
+    <alias name="helloBean" alias="anyangBean"/>
+
+    <bean id="helloBean" class="helloWorld.HelloWorld" scope="prototype">
         <property name="name" value="anyang" />
     </bean>
 
@@ -23,6 +25,18 @@
        <!--<property name="person" ref="person" />-->
         <constructor-arg ref="person"/>
     </bean>
+
+
+    <!--生命周期测试-->
+    <bean id="beanPostProcessor" class="life.MyBeanPostProcessor"/>
+    <bean id="instatiationAwareBeanPostProcessor" class="life.MyInstatiationAwareBeanPostProcessor"/>
+    <bean id="beanFactoryPostProcessor" class="life.MyBeanFactoryPostProcessor"/>
+
+    <bean id="lifeTest" class="life.LifeTest" init-method="myInit" destroy-method="myDestroy">
+        <property name="name" value="anyang"/>
+        <property name="address" value="江南大道东"/>
+    </bean>
+
 
 
 
