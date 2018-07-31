@@ -2,9 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tool
+       http://www.springframework.org/schema/tool/spring-tool.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config />
+    <context:component-scan base-package="soundSystem" />
 
     <bean id="helloBean" class="helloWorld.HelloWorld">
         <property name="name" value="anyang" />
@@ -21,7 +27,7 @@
     <!--第一种使用默认方法 no ,该类需要有一个默认构造器-->
     <bean id="customer" class="autowireTest.Customer">
        <!--<property name="person" ref="person" />-->
-        <constructor-arg ref="person"/>
+        <!--<constructor-arg ref="person"/>-->
     </bean>
 
 
