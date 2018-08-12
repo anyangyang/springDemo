@@ -12,23 +12,44 @@
     <context:annotation-config />
     <context:component-scan base-package="soundSystem" />
 
-    <bean id="helloBean" class="helloWorld.HelloWorld">
-        <property name="name" value="anyang" />
-    </bean>
+    <!--<alias name="helloBean" alias="anyangBean"/>-->
 
-    <bean id="person" class="autowireTest.Person">
-        <property name="name" value="anyang" />
-    </bean>
+    <!--<bean id="helloBean" class="helloWorld.HelloWorld" scope="prototype">-->
+        <!--<property name="name" value="anyang" />-->
+    <!--</bean>-->
+
+    <!--<bean id="person" class="autowireTest.Person">-->
+        <!--<property name="name" value="anyang" />-->
+    <!--</bean>-->
 
     <!--<bean id="personB" class="autowireTest.Person">-->
         <!--<property name="name" value="anyangyang" />-->
     <!--</bean>-->
 
     <!--第一种使用默认方法 no ,该类需要有一个默认构造器-->
-    <bean id="customer" class="autowireTest.Customer">
+    <!--<bean id="customer" class="autowireTest.Customer">-->
        <!--<property name="person" ref="person" />-->
         <!--<constructor-arg ref="person"/>-->
+    <!--</bean>-->
+
+    <context:property-placeholder location="person.properties" file-encoding="utf-8"/>
+
+    <!--<bean id="propertiesConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="location" value="person.properties"/>-->
+        <!--<property name="fileEncoding" value="utf-8"/>-->
+    <!--</bean>-->
+
+
+    <!--生命周期测试-->
+    <bean id="beanPostProcessor" class="life.MyBeanPostProcessor"/>
+    <bean id="instatiationAwareBeanPostProcessor" class="life.MyInstatiationAwareBeanPostProcessor"/>
+    <bean id="beanFactoryPostProcessor" class="life.MyBeanFactoryPostProcessor"/>
+
+    <bean id="lifeTest" class="life.LifeTest" init-method="myInit" destroy-method="myDestroy">
+        <property name="name" value="${person.name}"/>
+        <property name="address" value="江南大道东"/>
     </bean>
+
 
 
 
