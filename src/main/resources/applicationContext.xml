@@ -6,25 +6,25 @@
 
     <context:annotation-config />
 
-    <alias name="helloBean" alias="anyangBean"/>
+    <!--<alias name="helloBean" alias="anyangBean"/>-->
 
-    <bean id="helloBean" class="helloWorld.HelloWorld" scope="prototype">
-        <property name="name" value="anyang" />
-    </bean>
-
-    <bean id="person" class="autowireTest.Person">
-        <property name="name" value="anyang" />
-    </bean>
-
-    <!--<bean id="personB" class="autowireTest.Person">-->
-        <!--<property name="name" value="anyangyang" />-->
+    <!--<bean id="helloBean" class="helloWorld.HelloWorld" scope="prototype">-->
+        <!--<property name="name" value="anyang" />-->
     <!--</bean>-->
 
-    <!--第一种使用默认方法 no ,该类需要有一个默认构造器-->
-    <bean id="customer" class="autowireTest.Customer">
-       <!--<property name="person" ref="person" />-->
-        <constructor-arg ref="person"/>
-    </bean>
+    <!--<bean id="person" class="autowireTest.Person">-->
+        <!--<property name="name" value="anyang" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;<bean id="personB" class="autowireTest.Person">&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="name" value="anyangyang" />&ndash;&gt;-->
+    <!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;第一种使用默认方法 no ,该类需要有一个默认构造器&ndash;&gt;-->
+    <!--<bean id="customer" class="autowireTest.Customer">-->
+       <!--&lt;!&ndash;<property name="person" ref="person" />&ndash;&gt;-->
+        <!--<constructor-arg ref="person"/>-->
+    <!--</bean>-->
 
 
     <!--生命周期测试-->

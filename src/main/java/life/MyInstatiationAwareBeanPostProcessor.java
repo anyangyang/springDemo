@@ -11,7 +11,7 @@ public class MyInstatiationAwareBeanPostProcessor extends InstantiationAwareBean
 
     public MyInstatiationAwareBeanPostProcessor() {
         super();
-        System.out.println(" [ MyInstatiationAwareBeanPostProcessor 构造器 ] ");
+        System.out.println(" [ MyInstatiationAwareBeanPostProcessor 构造器 ] 进行实例化 ");
     }
 
     /**
