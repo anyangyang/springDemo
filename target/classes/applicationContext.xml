@@ -2,9 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tool
+       http://www.springframework.org/schema/tool/spring-tool.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config />
+    <context:component-scan base-package="soundSystem" />
 
     <!--<alias name="helloBean" alias="anyangBean"/>-->
 
@@ -12,29 +18,47 @@
         <!--<property name="name" value="anyang" />-->
     <!--</bean>-->
 
-    <!--<bean id="person" class="autowireTest.Person">-->
-        <!--<property name="name" value="anyang" />-->
+    <bean id="person" class="autowireTest.Person">
+        <property name="name" value="anyang" />
+    </bean>
+
+    <!--<bean id="personB" class="autowireTest.Person">-->
+        <!--<property name="name" value="anyangyang" />-->
     <!--</bean>-->
 
-    <!--&lt;!&ndash;<bean id="personB" class="autowireTest.Person">&ndash;&gt;-->
-        <!--&lt;!&ndash;<property name="name" value="anyangyang" />&ndash;&gt;-->
-    <!--&lt;!&ndash;</bean>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;第一种使用默认方法 no ,该类需要有一个默认构造器&ndash;&gt;-->
+    <!--第一种使用默认方法 no ,该类需要有一个默认构造器-->
     <!--<bean id="customer" class="autowireTest.Customer">-->
-       <!--&lt;!&ndash;<property name="person" ref="person" />&ndash;&gt;-->
+       <!--<property name="person" ref="person" />-->
         <!--<constructor-arg ref="person"/>-->
+    <!--</bean>-->
+
+    <context:property-placeholder location="person.properties" file-encoding="utf-8"/>
+
+    <!--<bean id="propertiesConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="location" value="person.properties"/>-->
+        <!--<property name="fileEncoding" value="utf-8"/>-->
     <!--</bean>-->
 
 
     <!--生命周期测试-->
+
     <bean id="beanPostProcessor" class="life.MyBeanPostProcessor"/>
     <bean id="instatiationAwareBeanPostProcessor" class="life.MyInstatiationAwareBeanPostProcessor"/>
     <bean id="beanFactoryPostProcessor" class="life.MyBeanFactoryPostProcessor"/>
 
-    <bean id="lifeTest" class="life.LifeTest" init-method="myInit" destroy-method="myDestroy">
-        <property name="name" value="anyang"/>
+    <bean id="replacer" class="life.Replacer"/>
+    <bean id="lifeTest" class="life.LifeTest"
+          init-method="myInit"
+          destroy-method="myDestroy"
+          name="a,b,c"
+          autowire="byName">
+
+        <property name="name" value="${person.name}"/>
         <property name="address" value="江南大道东"/>
+        <replaced-method name="show" replacer="replacer">
+            <arg-type match="String"/>
+            <arg-type match="int"/>
+        </replaced-method>
     </bean>
 
 

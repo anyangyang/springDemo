@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Customer {
 //
-//    @Autowired
+    @Autowired
 //    @Qualifier(value = "personB")
     private Person person;
 

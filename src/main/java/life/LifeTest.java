@@ -1,8 +1,8 @@
 package life;
 
+import autowireTest.Person;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
-import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -12,6 +12,7 @@ public class LifeTest implements BeanFactoryAware, BeanNameAware, InitializingBe
     private String name;
     private String address;
     private String phone;
+    private Person person;
 
     private BeanFactory beanFactory;
     private String beanName;
@@ -75,6 +76,10 @@ public class LifeTest implements BeanFactoryAware, BeanNameAware, InitializingBe
         this.phone = phone;
     }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
 
     public String getName() {
         return name;
@@ -86,5 +91,24 @@ public class LifeTest implements BeanFactoryAware, BeanNameAware, InitializingBe
 
     public String getAddress() {
         return address;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+
+
+    /**
+     * replace-method 测试
+     * @param name
+     * @param age
+     */
+    public void show(String name, int age){
+        System.out.println("name:" + name + " age:" + age);
+    }
+
+    public void show(){
+        System.out.println("我是空的");
     }
 }
