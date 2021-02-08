@@ -30,11 +30,27 @@
     <bean id="httpToolScannerConfigure" class="spring.HttpToolScannerConfigure">
         <property name="basePackage" value="demo.spring.rmi"></property>
         <property name="annotationClass" value="httpClient.annotation.HttpReq"></property>
-        <property name="httpClientBeanName" value="httpClientRmi"></property>
+        <property name="httpClientManagerBeanName" value="httpClientManager"></property>
         <property name="propertiesResolverName" value="propertiesResolver"></property>
+        <property name="proxyRuleName" value="proxyRule"></property>
     </bean>
 
-    <bean id="httpClientRmi" class="httpClient.HttpClientRmi"></bean>
+    <!--custom http client manager-->
+    <bean id="httpClientManager" class="httpClient.client.CustomHttpClientManager" init-method="init" destroy-method="destroy">
+        <property name="httpClientConfig" ref="httpClientConfig"></property>
+    </bean>
+
+    <bean id="httpClientConfig" class="httpClient.client.HttpClientConfig">
+        <property name="timeout" value="20000"></property>
+        <property name="connectionTimeout" value="10000"></property>
+        <property name="retryCount" value="1"></property>
+
+    </bean>
+
+    <bean id="proxyRule" class="httpClient.connection.SocksProxyRule">
+        <property name="proxy" value="${anyang.socks.proxy}"></property>
+        <property name="switchOn" value="${anyang.socks.proxy.switch.on}"/>
+    </bean>
     <bean id="propertiesResolver" class="spring.PropertiesResolver"></bean>
 
 </beans>

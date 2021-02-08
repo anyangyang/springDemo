@@ -4,8 +4,8 @@ target
 target/*
 */target/**
 *.properties
-.idea
-.git
+.idea/*
+.git/*
 *.iml
 *.eml
 *.log
