@@ -10,7 +10,7 @@ import httpClient.constants.HttpHeader;
 import httpClient.constants.HttpMethod;
 
 @HttpReq(domain = "${anyang.login.url}")
-public interface HttpRequestGetTest {
+public interface HttpRequestPostTest {
 
     @HttpReqHeader(name = HttpHeader.CONTENT_TYPE, value = HttpContentType.APPLICATION_JSON)
     @HttpReqConfig(httpMethod = HttpMethod.POST, path = "/user/login")

@@ -1,15 +1,6 @@
 import com.alibaba.fastjson.JSONObject;
-import demo.spring.rmi.HttpRequestGetTest;
-import org.springframework.beans.MutablePropertyValues;
-import org.springframework.beans.PropertyValue;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.support.GenericBeanDefinition;
-import org.springframework.context.ApplicationContext;
+import demo.spring.rmi.HttpRequestPostTest;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Arrays;
 
 public class Main {
 
@@ -60,10 +51,10 @@ public class Main {
 
         // method injection
 
-        HttpRequestGetTest httpRequestGetTest = (HttpRequestGetTest)context.getBean("httpRequestGetTest");
+        HttpRequestPostTest httpRequestPostTest = (HttpRequestPostTest)context.getBean("HttpRequestPostTest");
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("mobilephone", "13611111111");
         jsonObject.put("password", "123456");
-        httpRequestGetTest.getRemoteObj(jsonObject);
+        httpRequestPostTest.getRemoteObj(jsonObject);
     }
 }
