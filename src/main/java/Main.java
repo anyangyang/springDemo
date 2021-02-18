@@ -25,7 +25,7 @@ public class Main {
 //        System.out.println("person: " + person == null ? null : person.toString());
 //
 //
-//        // 静态工厂方法
+//        // 静态工厂方法 z
 //        Person anyang = (Person)context.getBean("personService");
 //        System.out.println("anyang: " + anyang == null ? null : anyang.toString());
 //
