@@ -40,7 +40,7 @@ public class Main {
 //        Person alan = (Person)context.getBean("alan");
 //        System.out.println("alan: " + alan == null ? null : alan.toString());
 //
-//        // setter-base DI  a
+//        // setter-base DI
 //        Person jaja = (Person)context.getBean("jaja");
 //        System.out.println("jaja: " + jaja == null ? null : jaja.toString());
 
